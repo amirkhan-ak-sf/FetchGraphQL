@@ -39,6 +39,8 @@ The fetchJSON function uses the following syntax:
   
 **xpath** represents the path to the item which need to be retrieved for the current cell.
 
+**returns** the value of the xpath into the cell.
+
 
 ## Define and validate your queries in Anypoint DataGraph.
 Before using this function, make sure to define and validate your query in Anypoint DataGraph. 
@@ -149,6 +151,44 @@ As the xpath will contain dynamic indexes, I used the id column to define row nu
 ## Get the xpath for the firstName field
 In order to retrieve the firstName field from the results, we need to access the node "data" > "customers" > {index} > "firstName". For example, we want to have the firstName of the first row, the xpath would be "data/customers/0/firstName". In order to make it more flexible, the Id column can be used to dynamically used as index, which would be represented as "data/customers/" & A2 & "/firstName". 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/xpath.png)
+
+# How-to-use the fetchFullResponse & fetchJSONOffline functions in google sheets
+If you are retrieving alot of data, it makes sense to define a query and store a full response in the google sheet and extract the values offline. 
+For this scenario, fetchFullResponse and fetchJSONOffline are created. First you fetch the full response from your query and make use of the fetchJSONOffline to extract different nodes from the full response. 
+
+## fetchFullResponse
+The fetchFullResponse function uses the following syntax:
+
+    =fetchFullResponse(url, client_id, client_secret, payload)
+
+**url** represents the graphql endpoint e.g. "https://datagraph-{id}.us-e2.cloudhub.io/graphql"
+  
+**client_id** represents the DataGraph client_id
+
+**client_secret** represents the DataGraph client_secret
+
+**payload** represents the graphql query. Note this must be a string.
+  
+**returns** complete response JSON.
+
+
+## fetchJSONOffline
+The fetchJSONOffline function uses the following syntax:
+
+    =fetchJSONOffline(payload, xpath)
+
+**payload** refers to the cell which contains the response of fetchFullResponse.
+  
+**xpath** represents the path to the item which need to be retrieved for the current cell, e.g. "data/customer/2/firstName" returns the firstName of the second item from the customer node.
+
+**returns** the value of the xpath into the cell.
+
+## Example of fetchFullResponse and store it in a google sheet cell
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/fetchFullResponse.png)
+
+## Example of fetchJSONOffline and store it in a google sheet cell
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/jsonoff.png)
+
 
 ## Video Tutorial
 Link to the video tutorial: coming soon...
