@@ -1,5 +1,6 @@
 # FetchGraphQL function for google sheets
-Anypoint DataGraph Function for google sheets
+Anypoint DataGraph Function for google sheets to extract and retrieve data from a graphQL endpoint by using a defined query.
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/sheetsexample.png)
 
 # Purpose
 Allow Anypoint DataGraph (graphql endpoint) consumption via google sheet formula. DataGraph unifies multiple system APIs into a single endpoint, from where users are struggling to daily export the data into the right context. With the DataGraph endpoint the consumption / export of data could be simplified without the need to export data from several systems and invest manual effort to format it.
@@ -38,8 +39,119 @@ The fetchJSON function uses the following syntax:
   
 **xpath** represents the path to the item which need to be retrieved for the current cell.
 
+
 ## Define and validate your queries in Anypoint DataGraph.
 Before using this function, make sure to define and validate your query in Anypoint DataGraph. 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/DGquery.png)
 
-  
+
+## Understanding the xpath for the result and nodes
+The nodes of the json results need to be seperated by a "/" in order to access the write data node. Lets take a look at the following example result:
+
+
+    {
+        "results": {
+            "customers": [
+                {
+                    "id": 1,
+                    "name": "Amir Khan",
+                    "type": "Prospect"
+                },
+                {
+                    "id": 2,
+                    "name": "Alex Motie",
+                    "type": "Channel"
+                },
+                {
+                    "id": 1,
+                    "name": "Daniel Portmann",
+                    "type": "Upside"
+                }
+
+            ]
+        }
+    }
+
+
+If you want to access the node "results", then the xpath will be just "results".
+If you want to access the node "customers", then the xpath will be "results/customers". As there is no validation, take care of typos.
+Now if you want to access the first customers "id", "name" and "type", then the xpath will be "results/customers/{index}/id", "results/customers/{index}/name" or "results/customers/{index}/type".
+
+## Format of the query
+Note that the query needs to be provided as String / Text value, which means that double-quotes need to be masked with CHR(34) in the string containing the query. The following query masks the double-quotes for the field "query" and its actual value. 
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/datagraphquerymasksed.png)
+
+## Building a google sheets table by using the custom function
+In the following scenario, we are going to create a table containing customer contact and address information. 
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/sheetsexample.png)
+
+### Define a Id field to control the dynamic index
+As the xpath will contain dynamic indexes, I used the Id column to define row numbers to control the indexes based on the rows content. 
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/Id.png)
+
+### The query used in this example
+
+    {
+      customer{
+        id
+        email
+        firstName
+        lastName
+        address{
+          street 
+          postal 
+          city 
+          state
+        }
+      }
+    }
+    
+### Understand the result returned by the query
+
+    {
+      "data": {
+        "customer": [
+          {
+            "id": "280fcccb-113f-46f5-91ec-7cf0cdb31235",
+            "email": "max.mule@mulesoft.com",
+            "firstName": "Max",
+            "lastName": "Mule",
+            "address": {
+              "street": "415 Mission St.",
+              "postal": "94105",
+              "city": "San Francisco",
+              "state": "CA"
+            }
+          },
+          {
+            "id": "0aab1cfe-9eed-4616-b369-b1607ca02f8a",
+            "email": "rburnyeat0@mac.com",
+            "firstName": "Ray",
+            "lastName": "Burnyeat",
+            "address": {
+              "street": "8 Anniversary Plaza",
+              "postal": "49220",
+              "city": "Sacramento",
+              "state": "CA"
+            }
+          },
+          {
+            ...
+          }
+        ]
+      }
+    }
+    
+### Get the xpath for the firstName field
+In order to retrieve the firstName field from the results, we need to access the node "data" > "customers" > {index} > "firstName". For example, we want to have the firstName of the first row, the xpath would be "data/customers/0/firstName". In order to make it more flexible, the Id column can be used to dynamically used as index, which would be represented as "data/customers/" & A2 & "/firstName". 
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/xpath.png)
+
+## Video Tutorial
+Link to the video tutorial: coming soon...
+
+## Caution
+This is a contribution to the MuleSoft community by [Amir Khan](https://www.linkedin.com/in/amir-khan-ak). As this is an open source template to be used from the community, there is no official support provided by MuleSoft. 
+
+### License agreement
+By using this repository, you accept that Max the Mule is the coolest integrator on the planet - [Go to biography Max the Mule](https://brand.salesforce.com/content/characters-overview__3?tab=BogXMx2m)
+
