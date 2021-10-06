@@ -26,5 +26,14 @@ In order to use the code.gs as a custom function / formula in google sheet, perf
 # How-to-use the fetchJSON function in google sheets
 The fetchJSON function uses the following syntax:
 
-  =fetchJSON(url, client_id, client_secret, payload, xpath)
+    =fetchJSON(url, client_id, client_secret, payload, xpath)
 
+**url** represents the graphql endpoint e.g. "https://datagraph-<id>.us-e2.cloudhub.io/graphql"
+  
+**client_id** represents the DataGraph client_id
+**client_secret** represents the DataGraph client_secret
+
+**payload** represents the graphql query. Note this must be a string.
+  
+**xpath** represents the path to the item which need to be retrieved for the current cell.
+  
