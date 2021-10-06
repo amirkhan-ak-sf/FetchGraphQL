@@ -28,7 +28,7 @@ The fetchJSON function uses the following syntax:
 
     =fetchJSON(url, client_id, client_secret, payload, xpath)
 
-**url** represents the graphql endpoint e.g. "https://datagraph-<id>.us-e2.cloudhub.io/graphql"
+**url** represents the graphql endpoint e.g. "https://datagraph-{id}.us-e2.cloudhub.io/graphql"
   
 **client_id** represents the DataGraph client_id
 
