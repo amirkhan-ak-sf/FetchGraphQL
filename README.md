@@ -23,4 +23,8 @@ In order to use the code.gs as a custom function / formula in google sheet, perf
 
 5. That's it! The function is now available in google sheets.
 
+# How-to-use the fetchJSON function in google sheets
+The fetchJSON function uses the following syntax:
+
+  =fetchJSON(url, client_id, client_secret, payload, xpath)
 
