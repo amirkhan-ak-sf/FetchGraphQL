@@ -85,7 +85,7 @@ Note that the query needs to be provided as String / Text value, which means tha
 In the following scenario, we are going to create a table containing customer contact and address information. 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/sheetsexample.png)
 
-### Define a Id field to control the dynamic index
+### Define a id field to control dynamic xpath
 As the xpath will contain dynamic indexes, I used the Id column to define row numbers to control the indexes based on the rows content. 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/Id.png)
 
@@ -142,6 +142,7 @@ As the xpath will contain dynamic indexes, I used the Id column to define row nu
       }
     }
     
+
 ### Get the xpath for the firstName field
 In order to retrieve the firstName field from the results, we need to access the node "data" > "customers" > {index} > "firstName". For example, we want to have the firstName of the first row, the xpath would be "data/customers/0/firstName". In order to make it more flexible, the Id column can be used to dynamically used as index, which would be represented as "data/customers/" & A2 & "/firstName". 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/xpath.png)
