@@ -37,4 +37,9 @@ The fetchJSON function uses the following syntax:
 **payload** represents the graphql query. Note this must be a string.
   
 **xpath** represents the path to the item which need to be retrieved for the current cell.
+
+## Define and validate your queries in Anypoint DataGraph.
+Before using this function, make sure to define and validate your query in Anypoint DataGraph. 
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/DGquery.png)
+
   
