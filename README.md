@@ -31,6 +31,7 @@ The fetchJSON function uses the following syntax:
 **url** represents the graphql endpoint e.g. "https://datagraph-<id>.us-e2.cloudhub.io/graphql"
   
 **client_id** represents the DataGraph client_id
+
 **client_secret** represents the DataGraph client_secret
 
 **payload** represents the graphql query. Note this must be a string.
