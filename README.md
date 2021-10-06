@@ -81,9 +81,11 @@ Now if you want to access the first customers "id", "name" and "type", then the 
 Note that the query needs to be provided as String / Text value, which means that double-quotes need to be masked with CHR(34) in the string containing the query. The following query masks the double-quotes for the field "query" and its actual value. 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/datagraphquerymasksed.png)
 
+
 ## Building a google sheets table by using the custom function
 In the following scenario, we are going to create a table containing customer contact and address information. 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/sheetsexample.png)
+
 
 ### Define a id field to control dynamic xpath
 As the xpath will contain dynamic indexes, I used the Id column to define row numbers to control the indexes based on the rows content. 
@@ -143,7 +145,8 @@ As the xpath will contain dynamic indexes, I used the Id column to define row nu
     }
     
 
-### Get the xpath for the firstName field
+
+## Get the xpath for the firstName field
 In order to retrieve the firstName field from the results, we need to access the node "data" > "customers" > {index} > "firstName". For example, we want to have the firstName of the first row, the xpath would be "data/customers/0/firstName". In order to make it more flexible, the Id column can be used to dynamically used as index, which would be represented as "data/customers/" & A2 & "/firstName". 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/xpath.png)
 
