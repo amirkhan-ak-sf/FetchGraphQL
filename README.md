@@ -9,7 +9,7 @@ As an example we have 4 APIs connected to different backend systems. These syste
 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/customer_address.png)
 
-# Implement custom GraphQL custom function in googlesheets.
+# Implement GraphQL custom function in googlesheets.
 In order to use the code.gs as a custom function / formula in google sheet, perform the following steps.
 
 1. Open a new workbook in google sheets.
