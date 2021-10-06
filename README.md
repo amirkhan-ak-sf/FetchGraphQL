@@ -77,19 +77,21 @@ If you want to access the node "results", then the xpath will be just "results".
 If you want to access the node "customers", then the xpath will be "results/customers". As there is no validation, take care of typos.
 Now if you want to access the first customers "id", "name" and "type", then the xpath will be "results/customers/{index}/id", "results/customers/{index}/name" or "results/customers/{index}/type".
 
+
+## Building a google sheets table
+In the following scenario, we are going to create a table containing customer contact and address information.
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/sheetsexample.png)
+
+
+## Define a id field to control dynamic xpath
+As the xpath will contain dynamic indexes, I used the id column to define row numbers to control the indexes based on the rows content. 
+![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/Id.png)
+
+
 ## Format of the query
 Note that the query needs to be provided as String / Text value, which means that double-quotes need to be masked with CHR(34) in the string containing the query. The following query masks the double-quotes for the field "query" and its actual value. 
 ![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/datagraphquerymasksed.png)
 
-
-## Building a google sheets table by using the custom function
-In the following scenario, we are going to create a table containing customer contact and address information. 
-![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/sheetsexample.png)
-
-
-### Define a id field to control dynamic xpath
-As the xpath will contain dynamic indexes, I used the Id column to define row numbers to control the indexes based on the rows content. 
-![Image of API-led example](https://github.com/API-Activist/FetchGraphQL/blob/main/Id.png)
 
 ### The query used in this example
 
