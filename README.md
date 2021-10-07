@@ -193,7 +193,7 @@ The fetchJSONOffline function uses the following syntax:
 
 
 ## Video Tutorial
-Link to the video tutorial: coming soon...
+Link to the video tutorial: https://youtu.be/7pQKRG2yrRU
 
 ## Caution
 This is a contribution to the MuleSoft community by [Amir Khan](https://www.linkedin.com/in/amir-khan-ak). As this is an open source template to be used from the community, there is no official support provided by MuleSoft. 
