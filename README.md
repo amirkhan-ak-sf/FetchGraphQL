@@ -48,7 +48,7 @@ Before using this function, make sure to define and validate your query in Anypo
 
 
 ## Understanding the xpath for the result and nodes
-The nodes of the json results need to be seperated by a "/" in order to access the write data node. Lets take a look at the following example result:
+The nodes of the json results need to be seperated by a "/" in order to access the right data node. Lets take a look at the following example result:
 
 
     {
@@ -76,7 +76,9 @@ The nodes of the json results need to be seperated by a "/" in order to access t
 
 
 If you want to access the node "results", then the xpath will be just "results".
+
 If you want to access the node "customers", then the xpath will be "results/customers". As there is no validation, take care of typos.
+
 Now if you want to access the first customers "id", "name" and "type", then the xpath will be "results/customers/{index}/id", "results/customers/{index}/name" or "results/customers/{index}/type".
 
 
